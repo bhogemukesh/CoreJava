@@ -49,20 +49,20 @@ Note : Here min and max value change according to way how you implement comparat
 In Short here max is last element in sorted result
 
 ### Printing of element Using streams
- Using foreach to execute function
-  1) Inbuild Function
-  2) Custom Function
-e.g 
-1) names.stream().forEach(System.out::println);
+    Using foreach to execute function
+        1) Inbuild Function
+        2) Custom Function
+    e.g
+        1) names.stream().forEach(System.out::println);
 
-2) numbers.stream().forEach(
-    i->System.out.println("New Way :: The square of "+i+" is "+(i*i)+".")
-);
+        2) numbers.stream().forEach(
+                i->System.out.println("New Way :: The square of "+i+" is "+(i*i)+".")
+            );
 
 ### toArray 
 To convert Collection into array
 
 ### Streams.of()
-1)Streams.of(array)
-2)Streams.of(1,2,3,4,5,6,7,8,9,0,11,22,33,455,7)
+    1)Streams.of(array)
+    2)Streams.of(1,2,3,4,5,6,7,8,9,0,11,22,33,455,7)
 -----------------------------------------------------------------------------------------------
