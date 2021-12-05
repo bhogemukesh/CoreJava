@@ -59,6 +59,8 @@ In Short here max is last element in sorted result
 
 ### toArray 
 To convert Collection into array
+    
+    numbers.stream().toArray(Integer[] ::new);
 
 ### Streams.of()
     1)Streams.of(array)
