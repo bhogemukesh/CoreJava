@@ -4,6 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * This Example will help to understand map concept
+ * Many Developers get confused with word .map() method with Map interface and hashmap.
+ * But here .map() method means mapping the result with expected result from existing collection
+ *
+ * Problem Statement: Double the every number from list and create (map) it to new list
+ */
+
 public class DoubleNumberInList {
 
     public static void main(String[] args) {
