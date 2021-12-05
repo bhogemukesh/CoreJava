@@ -9,13 +9,13 @@ import java.util.stream.Collectors;
  * This Example will help to understand filter concept
  * Problem Statement: From Given Integer ArrayList find out even number
  */
-public class StreamFilter {
+public class FindEvenNumbers {
 
 
     public static void main(String[] args) {
-        StreamFilter sf = new StreamFilter();
-        List<Integer> numbersList = sf.createIntegerList();
-        List<Integer> evenNumList = sf.getEvenNumbersUsingForEach(numbersList);
+        FindEvenNumbers findEvenNumbers = new FindEvenNumbers();
+        List<Integer> numbersList = findEvenNumbers.createIntegerList();
+        List<Integer> evenNumList = findEvenNumbers.getEvenNumbersUsingForEach(numbersList);
         System.out.println("Using ForEach :: " + evenNumList);
 
         // Get List of Even numbers using Streams Filter
