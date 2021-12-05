@@ -6,6 +6,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
+ * @author mukesh_bhoge
+ * Filter in streams is accepting Predicate always.
+ * It can accept Only Boolean value
+ * So to perform conditional check things always use filter
+ * stream.filter(Predicate)
+ * <p>
  * This Example will help to understand filter concept
  * Problem Statement: From Given Integer ArrayList find out even number
  */

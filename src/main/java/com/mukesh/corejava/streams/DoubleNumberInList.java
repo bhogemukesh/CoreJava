@@ -5,10 +5,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
+ * @author mukesh_bhoge
  * This Example will help to understand map concept
  * Many Developers get confused with word .map() method with Map interface and hashmap.
  * But here .map() method means mapping the result with expected result from existing collection
- *
+ * .map(Function) in streams is accepting Predicate always.
+ * It can accept any operation.So to perform any operation use map
+ * stream.map(function)
  * Problem Statement: Double the every number from list and create (map) it to new list
  */
 
