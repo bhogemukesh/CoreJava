@@ -1,4 +1,49 @@
-## Streams  :
+# Streams  :
+
+Stream has below features : 
+1) No Storage : Streams don't have separate storage like collection, array
+2) Functional in Nature : Produces a result but does not modify source
+3) Laziness Seeking  : All Intermediate operations are always lazy
+4) Consumable : Elements of stream are only visited once during life of stream life.
+
+## How to generate Stream obtain
+1) using stream() or parallelStream()
+2) Arrays.stream(Object[])
+3) Stream.of(Object[])
+4) IntStream.range(int,int)
+5) Random.ints()
+
+## Streams Operation are divided in two main things
+### Intermediate Operations:
+1) Return new stream always
+2) Traverse does not begin until terminal operation of pipeline executed 
+3) These have two main times 
+   1) Stateless : Each element processed separately 
+   2) Stateful : Complete object processed to generate result. e.g. sort,distinct
+4) These are always Lazy loaded
+5) List of Intermediate operations : 
+   1) filter
+   2) map
+   3) flatmap
+   4) distinct
+   5) sorted
+   6) limit
+   7) skip
+
+### Terminal Operations : 
+1) Returns primitive value, Concrete type like Optional, void
+2) These are eagerly executed & always last operation
+3) List of Terminal operations :
+   1) allMatch()
+   2) anyMatch()
+   3) noneMatch()
+   4) collect()
+   5) count()
+   6) forEach()
+   7) min()
+   8) max()
+   9) reduce()
+
 
 When to use Collection?
 If you want to represent group of objects as single entity then we should go for collection.
