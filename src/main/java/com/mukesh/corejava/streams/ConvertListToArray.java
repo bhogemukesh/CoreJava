@@ -17,7 +17,7 @@ public class ConvertListToArray {
         numbers.add(14);
 
         // Convert List to array
-        Integer [] iArray =  numbers.stream().toArray(Integer[] ::new);
+        Integer [] iArray =  numbers.stream().toArray(Integer[]::new);
 
         // Print Array by converting to stream
         Stream.of(iArray).forEach(System.out::println);
