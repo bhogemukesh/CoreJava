@@ -16,8 +16,13 @@ public class LambdaFunctionExceptionHandling {
         IntFunction intFunction = (x, y) -> {
             throw new FileNotFoundException();
         };
+        try {
+            System.out.println("-->"+intFunction.add(1,2));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
-//        // As we are throwing Parent Exception it will give compile time error
+//        // As we are throwing Parent Exception here it will give compile time error
 //        IntFunction intFunction2 = (x,y)-> {
 //            throw  new IOException();
 //        };
