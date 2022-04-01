@@ -27,6 +27,5 @@ public class PredicateExample {
         Predicate<String> chainedPredicate = startWithA.and(lengthIsMoreThan3);
         String result = Arrays.stream(arr).filter(chainedPredicate).collect(Collectors.joining(","));
         System.out.println("Result :: "+result);
-
     }
 }
