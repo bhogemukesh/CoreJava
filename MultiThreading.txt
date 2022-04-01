@@ -1,0 +1,99 @@
+Thread Pool : 
+Fixed Threading pool. 
+Uses blocking queue internally. 
+
+It keep storing all tasks which we submitted. 
+Here thread take the tasks stored in queue once they available. 
+All these thread trying to get task from queue simultaniously and hence we need
+a queue which can handle all tasks concurrently. So you want a queue which is thread safe.
+And that is why thread pool uses blocking queue. 
+
+
+How to decide thread pool size. 
+
+In one java thread =  1 OS thread 
+
+SO that means if you have 4 core then u r CPU will run 4 thread only. 
+
+
+
+
+Types of  Thread Pool 
+Java provide 4 types of thread pool 
+1) FixedThreadPool
+2) CachedThreadPool
+3) ScheduledThreadPool 
+4) SingleThreadedExecutor
+
+1) FixedThreadPool
+		Here we have fixed number of thread in pool.It internally uses blocking queue as queue has to handle concurrent operations. 
+		
+		Lets divide tasks like 
+		1) CPU Intensive operations
+		2) I/O intensive oprations 
+		How to decide thread pool size : 
+		
+		1) CPU Intensive operations
+
+			For CPU intensive operations to decide thread pool size get the availableProcessors at run time using Runtime.getRunTime.availableProcessors() 
+			and then pass that count to executor thread pool.
+				ExecutorService service = Executors.newFixedThreadPool(processorCount);
+			But there is catch you need to check if your CPU is running other applications as well. Then your application can not use all available CPU. 
+
+		2) I/O intensive oprations 
+			Example -- Db calls , HTTP Calls 
+			We can use higher number of thread in this case. 
+			It will depend on how many tasks you want to submit at a time and avaerage wait time for operation to complete. So It's tread off. 
+		
+		Code : 
+			int availbleProcessorCount = Runtime.getRunTime.availableProcessors();
+			ExecutorService service = Executors.newFixedThreadPool(availbleProcessorCount);
+			for (int i=0; i<100;i++){
+				service.execute(new Task())
+			} 
+
+
+2) CachedThreadPool : 
+	Here u do not have fixed number of thread also you do not have queue to hold the task. 
+	Instead there is one queue called as Synchronous queue which have only space for single item. 
+	So every time when you submit task the pool will search for available thread which is already created and free. 
+	If no such thread is available then it will create a thread and add to that pool. 
+	So therotically this pool have capability to create as number as thread required. 
+	As it will create too many thread then cached thread pool have ability to kill those thread once they are ideal for more than 60 seconds. 
+	
+	Code :
+	ExecutorService service = Executors.newCachedThreadPool();
+	for (int i=0; i<100;i++){
+		service.execute(new Task())
+	} 
+
+3) ScheduledThreadPool : 
+   This is generally used when u want to execute tasks which are after some time delay or difference. 
+   Consider a scenario where you want to check sechduled check like security , logging checks or sometypes of check  and all other then you can use this kind of pool. 
+   There are basically 3 ways 
+	service.schedule  : Here it will schedule one of tasks after perticular delay.
+	service.shceduleAtFixRate : Here it will execute tasks at fixed rate. Here it will store all tasks in one delay queue and then execute with fix 
+								rate.
+	service.scheduleAtFixDelay :  Sometimes you don't know when task will end. then we can mentione here delay after which next task executes.
+	
+	Code :
+	ExecutorService service = Executors.newFixedThreadPool(10);
+	// Task to run after 10 seconds
+	service.schedule(new Task(), delay:10 , TimeUnits.SECONDS);
+	
+	// Task to run repeatedly every 10 seconds
+    service.shceduleAtFixRate(new Task(), initalDelay:15 , period:10 , TimeUnits.SECONDS);	
+	
+	// Task to run repeatedly 10 seconds after previous task complete
+    service.scheduleAtFixDelay(new Task(), initalDelay:15 , delay:10 , TimeUnits.SECONDS);	
+	
+4) SingleThreadedExecutor : 
+    This is having only one thread to execute all tasks. It is exactly same as FixedThreadPool executor having size on pool is 1.
+	Advantage of having this kind of threadpool over standalone thread is if due to some exception thread got killed then it will create thread again. 
+	It internally uses Blocking Queue. And thread will fetch tasks one by one.
+	
+	This kind of mechnism will be used where you want to execute tasks sequencially. 
+	
+	
+	
+   
